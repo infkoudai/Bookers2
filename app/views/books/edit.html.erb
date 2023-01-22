@@ -1,0 +1,33 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li class = "error-text"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="container mx-auto w-50 my-5">
+  
+    <div><h2>Editing Book</h2></div>
+    <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+    <div>
+      <h4>Title</h4>
+      <%= f.text_field :title, style: "width:100%" %>
+    </div>
+    <div>
+      <h4>Body</h4>
+      <%= f.text_area :body, style: "width:100%" %>
+    </div>
+    <div>
+      <%= f.submit 'Update Books', class: 'btn btn-success' %>
+    </div>
+    <div>
+      <p>
+        <%= link_to "Show", book_path(@book.id) %><span>|</span><%= link_to "Back", books_path %>
+      </p>
+    </div>
+    <% end %>
+  
+</div>
+

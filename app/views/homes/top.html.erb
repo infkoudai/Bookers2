@@ -1,0 +1,21 @@
+<div class = "success">
+  <%= flash[:notice] %>
+</div>
+<div class="container mx-auto w-50 my-5">
+    
+    <h1 class="d-block">welcome to <i class="fas fa-book"></i>Bookers !!</h1>
+
+    <p class="d-block">In Bookers,</p>
+
+    <p class="d-block">you can share and exchange your opinions , inpressions , and emotions</p>
+
+    <p class="d-block">about various books!</p>
+    <div class="row">
+      <div class="col-md">
+        <button type="button" class="btn btn-primary btn-block"><%= link_to "Log in", new_user_session_path, class: 'text-white' %></button>
+        <button type="button" class="btn btn-success btn-block"><%= link_to "Sign up",new_user_registration_path, class: 'text-white' %></button>
+      </div>
+    </div>
+
+</div>
+

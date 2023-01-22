@@ -1,0 +1,28 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>errors prohibited this book from being saved:
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li class = "error-text"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<div class="container mx-auto w-50 my-5">
+  
+    <div><h2>User info</h2></div>
+    <%= form_with model: @user do |f| %>
+    <div>
+      <h4>Name</h4>
+      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前", style: "width:100%"%>
+    </div>
+    <div>
+      <h4>Image</h4>
+      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %> 
+    </div>
+    <div></div>
+    <div>
+      <%= f.submit "Update User", class: 'btn btn-secondary' %>
+    </div>
+    <% end %>
+  
+</div>
+
