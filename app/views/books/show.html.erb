@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-md-3">
       <h2>User info</h2>
       <%= image_tag @bookx.user.get_profile_image(80,80) %>
       <table class="table table-striped">
@@ -18,10 +18,10 @@
           <th><%= @bookx.user.introduction %></th>
         </tr>
       </table>
-      <%= link_to edit_user_path(current_user.id) do %>
+      <%= link_to edit_user_path(@bookx.user.id) do %>
         <button type="button" class="btn btn-outline-secondary btn-block"><i class="fas fa-user-cog"></i></button>
       <% end %>
-      <h2>New Book</h2>
+      <h2>New book</h2>
       <%= form_with model: @book do |f| %>
       <div>
         <h4>Title</h4>
@@ -36,8 +36,8 @@
       </div>
       <% end %>
     </div>
-    <div class="col-lg-8">
-      <h2>Book Details</h2>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book details</h2>
       <table class="table table-striped">
         <tr>
           <th colspan = "1"></th>
@@ -48,7 +48,12 @@
           <% end %>
         </tr>
         <tr>
-          <td><%= image_tag @bookx.user.get_profile_image(80,80) %></td>
+          <td>
+            <%= link_to user_path(@bookx.user.id) do %>
+            <%= image_tag @bookx.user.get_profile_image(80,80) %>
+            <p><%= @bookx.user.name %></p>
+            <% end %>
+          </td>
           <td><%= @bookx.title %></td>
           <td><%= @bookx.body %></td>
           <% if @bookx.user == current_user %>

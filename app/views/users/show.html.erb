@@ -3,7 +3,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-md-3">
       <h2>User info</h2>
       <%= image_tag @user.get_profile_image(80,80) %>
       <table class="table table-striped">
@@ -20,7 +20,7 @@
       <%= link_to edit_user_path(@user.id) do %>
         <button type="button" class="btn btn-outline-secondary btn-block"><i class="fas fa-user-cog"></i></button>
       <% end %>
-      <h2>New Book</h2>
+      <h2>New book</h2>
       <%= form_with model: @book do |f| %>
       <div>
         <h4>Title</h4>
@@ -35,7 +35,7 @@
       </div>
       <% end %>
     </div>
-    <div class="col-lg-8">
+    <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-striped">
         <tr>
@@ -45,7 +45,7 @@
         </tr>
         <% @books.each do |book| %>
         <tr>
-          <td><%= image_tag book.user.get_profile_image(80,80) %></td>
+          <td><%= link_to user_path(book.user.id) do %><%= image_tag book.user.get_profile_image(80,80) %><% end %></td>
           <td><%= link_to book_path(book.id) do %><%= book.title %><% end %></td>
           <td><%= book.body %></td>
         </tr>
