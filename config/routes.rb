@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root to: "homes#top"
   
-  resources :books, only: [:create, :index, :show, :edit, :destroy, :update]
+  resources :books, only: [:create, :index, :show, :edit, :destroy, :update] do
+    resources :book_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+  end
   devise_for :users
   get 'home/about' => 'homes#about', as: 'about'
   resources :users, only: [:show, :edit, :index, :update]
